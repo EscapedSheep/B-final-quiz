@@ -9,4 +9,6 @@ import java.util.List;
 @Repository
 public interface TraineeRepository extends JpaRepository<Trainee, Integer> {
     public List<Trainee> findAllByTeamGroupId(Integer groupId);
+
+    public List<Trainee> findAllByTeamGroupIdNotNull();
 }

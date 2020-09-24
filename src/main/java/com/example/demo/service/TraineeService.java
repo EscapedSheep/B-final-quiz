@@ -22,7 +22,7 @@ public class TraineeService {
     }
 
     public List<Trainee> findTraineeByCondition(Boolean grouped) {
-        return grouped ? traineeRepository.findAll() :traineeRepository.findAllByTeamGroupId(null);
+        return grouped ? traineeRepository.findAllByTeamGroupIdNotNull() :traineeRepository.findAllByTeamGroupId(null);
     }
 
     public void deleteStudent(int id) {

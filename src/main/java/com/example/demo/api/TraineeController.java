@@ -22,12 +22,13 @@ public class TraineeController {
     }
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public Trainee addTrainee(@RequestBody @Valid Trainee trainee) {
         return traineeService.addTrainee(trainee);
     }
 
     @GetMapping
-    public List<Trainee> findAllNonGroupTrainee(@PathParam("grouped") boolean grouped) {
+    public List<Trainee> findTraineeByCondition(@PathParam("grouped") boolean grouped) {
         return traineeService.findTraineeByCondition(grouped);
     }
 

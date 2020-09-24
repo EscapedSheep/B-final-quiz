@@ -17,4 +17,8 @@ public class Error {
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private Map<String, String> details;
+
+    public void addDetails(String key, String value) {
+        details.put(key, value);
+    }
 }
