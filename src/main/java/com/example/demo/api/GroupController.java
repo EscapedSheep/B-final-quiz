@@ -5,6 +5,7 @@ import com.example.demo.service.GroupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @CrossOrigin
@@ -29,7 +30,7 @@ public class GroupController {
     }
 
     @PatchMapping("{group_id}")
-    public Group updateGroupName(@PathVariable Integer group_id, Group group) {
+    public Group updateGroupName(@PathVariable Integer group_id, @RequestBody @Valid Group group) {
         return groupService.updateGroupName(group_id, group);
     }
 }
