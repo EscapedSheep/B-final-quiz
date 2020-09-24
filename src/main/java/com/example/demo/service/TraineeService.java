@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.domain.Trainee;
+import com.example.demo.exception.IdNotExistedException;
 import com.example.demo.repository.TraineeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,5 +23,10 @@ public class TraineeService {
 
     public List<Trainee> findTraineeByCondition(Boolean grouped) {
         return grouped ? traineeRepository.findAll() :traineeRepository.findAllByTeamGroupId(null);
+    }
+
+    public void deleteStudent(int id) {
+        Trainee trainee = traineeRepository.findById(id).orElseThrow(IdNotExistedException::new);
+        traineeRepository.delete(trainee);
     }
 }
