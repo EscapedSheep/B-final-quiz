@@ -1,0 +1,26 @@
+package com.example.demo.service;
+
+import com.example.demo.domain.Trainee;
+import com.example.demo.repository.TraineeRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class TraineeService {
+    private TraineeRepository traineeRepository;
+
+    @Autowired
+    public TraineeService(TraineeRepository traineeRepository) {
+        this.traineeRepository = traineeRepository;
+    }
+
+    public Trainee addTrainee(Trainee trainee) {
+        return traineeRepository.save(trainee);
+    }
+
+    public List<Trainee> findTraineeByCondition(Boolean grouped) {
+        return grouped ? traineeRepository.findAll() :traineeRepository.findAllByTeamGroupId(null);
+    }
+}
