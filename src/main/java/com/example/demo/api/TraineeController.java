@@ -28,13 +28,13 @@ public class TraineeController {
     }
 
     @GetMapping
-    public List<Trainee> findTraineeByCondition(@PathParam("grouped") boolean grouped) {
+    public List<Trainee> findTraineeByCondition(@PathParam("grouped") Boolean grouped) {
         return traineeService.findTraineeByCondition(grouped);
     }
 
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteStudent(@PathVariable int id) {
+    public void deleteStudent(@PathVariable Integer id) {
         traineeService.deleteStudent(id);
     }
 }

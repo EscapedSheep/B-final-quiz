@@ -31,4 +31,11 @@ public class GlobalExceptionHandler {
         });
         return ResponseEntity.badRequest().body(error);
     }
+
+    @ExceptionHandler(GroupFailedException.class)
+    public ResponseEntity<Error> handleGroupFailed(GroupFailedException exception) {
+        Error error = Error.builder()
+                .message(exception.getMessage()).build();
+        return ResponseEntity.badRequest().body(error);
+    }
 }

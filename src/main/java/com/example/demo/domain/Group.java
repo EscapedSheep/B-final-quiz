@@ -2,6 +2,7 @@ package com.example.demo.domain;
 
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -14,6 +15,7 @@ import static com.example.demo.constant.PropertyValidationMessage.NAME_NOT_BLANK
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Entity
 @Table(name = "teamGroup")
 public class Group {
@@ -29,4 +31,12 @@ public class Group {
 
     @OneToMany(mappedBy = "teamGroup")
     private List<Trainee> trainees;
+
+    public void addTrainee(Trainee trainee){
+        this.trainees.add(trainee);
+    }
+
+    public void addTrainer(Trainer trainer) {
+        this.trainers.add(trainer);
+    }
 }

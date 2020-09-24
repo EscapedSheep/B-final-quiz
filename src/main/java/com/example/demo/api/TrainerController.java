@@ -31,4 +31,10 @@ public class TrainerController {
     public List<Trainer> findTrainerByCondition(@PathParam("grouped") Boolean grouped) {
         return trainerService.findTrainerByCondition(grouped);
     }
+
+    @DeleteMapping("{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteTrainer(@PathVariable Integer id) {
+        trainerService.deleteTrainer(id);
+    }
 }
