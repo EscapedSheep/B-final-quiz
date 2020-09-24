@@ -25,7 +25,7 @@ public class TraineeService {
         return grouped ? traineeRepository.findAllByTeamGroupIdNotNull() :traineeRepository.findAllByTeamGroupId(null);
     }
 
-    public void deleteStudent(int id) {
+    public void deleteTrainee(int id) {
         Trainee trainee = traineeRepository.findById(id).orElseThrow(IdNotExistedException::new);
         traineeRepository.delete(trainee);
     }

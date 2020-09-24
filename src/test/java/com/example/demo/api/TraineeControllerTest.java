@@ -110,18 +110,18 @@ class TraineeControllerTest {
                     .andReturn().getResponse();
 
             assertEquals(response.getStatus(), HttpStatus.NO_CONTENT.value());
-            verify(traineeService).deleteStudent(1);
+            verify(traineeService).deleteTrainee(1);
         }
 
         @Test
         void should_receive_error_when_id_not_existed() throws Exception {
-            doThrow(new IdNotExistedException()).when(traineeService).deleteStudent(anyInt());
+            doThrow(new IdNotExistedException()).when(traineeService).deleteTrainee(anyInt());
 
             MockHttpServletResponse response = mockMvc.perform(delete("/trainees/1"))
                     .andReturn().getResponse();
 
             assertEquals(response.getStatus(), HttpStatus.NOT_FOUND.value());
-            verify(traineeService).deleteStudent(1);
+            verify(traineeService).deleteTrainee(1);
         }
     }
 }

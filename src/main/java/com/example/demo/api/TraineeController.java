@@ -35,6 +35,6 @@ public class TraineeController {
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteStudent(@PathVariable Integer id) {
-        traineeService.deleteStudent(id);
+        traineeService.deleteTrainee(id);
     }
 }
