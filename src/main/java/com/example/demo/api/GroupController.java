@@ -27,4 +27,9 @@ public class GroupController {
     public List<Group> autoGrouping() {
         return groupService.autoGrouping();
     }
+
+    @PatchMapping("{group_id}")
+    public Group updateGroupName(@PathVariable Integer group_id, Group group) {
+        return groupService.updateGroupName(group_id, group);
+    }
 }

@@ -4,4 +4,6 @@ public class ErrorMessage {
     public static final String ID_NOT_EXISTED = "Id not existed";
 
     public static final String GROUP_FAILED = "Auto grouping failed";
+
+    public static final String GROUP_NAME_EXISTED = "Group name existed";
 }

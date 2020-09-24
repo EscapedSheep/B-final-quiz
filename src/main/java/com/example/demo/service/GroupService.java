@@ -4,6 +4,8 @@ import com.example.demo.domain.Group;
 import com.example.demo.domain.Trainee;
 import com.example.demo.domain.Trainer;
 import com.example.demo.exception.GroupFailedException;
+import com.example.demo.exception.GroupNameExistedException;
+import com.example.demo.exception.IdNotExistedException;
 import com.example.demo.repository.GroupRepository;
 import com.example.demo.repository.TraineeRepository;
 import com.example.demo.repository.TrainerRepository;
@@ -107,5 +109,17 @@ public class GroupService {
                 size -= 1;
             }
         }
+    }
+
+    public Group updateGroupName(Integer group_id, Group group) {
+        Group findGroup = groupRepository.findById(group_id).orElseThrow(IdNotExistedException::new);
+        List<Group> groups = groupRepository.findAll();
+        groups.forEach(g -> {
+            if(g.getName().equals(group.getName())) {
+                throw new GroupNameExistedException();
+            }
+        });
+        findGroup.setName(group.getName());
+        return groupRepository.save(findGroup);
     }
 }
