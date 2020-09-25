@@ -30,6 +30,8 @@ public class GroupController {
     }
 
     @PatchMapping("{group_id}")
+    // GTB: - Patch时建议使用单独的ChangeOfXxx, 只包含要修改的字段
+    // GTB: - 变量不符合命名规范
     public Group updateGroupName(@PathVariable Integer group_id, @RequestBody @Valid Group group) {
         return groupService.updateGroupName(group_id, group);
     }

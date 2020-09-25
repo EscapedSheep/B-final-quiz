@@ -55,6 +55,7 @@ public class GroupService {
     public List<Group> autoGrouping() {
         List<Trainer> trainers = trainerRepository.findAll();
         List<Trainee> trainees = traineeRepository.findAll();
+        // GTB: - magic number
         if (trainers.size() < 2 || trainees.size() == 0) {
             throw new GroupFailedException();
         }

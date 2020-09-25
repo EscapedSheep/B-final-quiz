@@ -14,6 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/trainees")
 public class TraineeController {
+    // GET: - 构造器注入的属性推荐使用final
     private TraineeService traineeService;
 
     @Autowired
@@ -34,6 +35,7 @@ public class TraineeController {
 
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
+    // GTB: - @PathVariable应该显式写明value属性
     public void deleteStudent(@PathVariable Integer id) {
         traineeService.deleteTrainee(id);
     }

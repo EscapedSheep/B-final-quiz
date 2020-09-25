@@ -18,6 +18,7 @@ import static com.example.demo.constant.PropertyValidationMessage.*;
 @Builder
 @Entity
 @Table
+// GTB: - 数据库和请求建议使用两个类，避免注解混乱
 public class Trainee {
     @Id
     @GeneratedValue
