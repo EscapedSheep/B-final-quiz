@@ -58,7 +58,7 @@ public class GroupService {
         if (trainers.size() < 2 || trainees.size() == 0) {
             throw new GroupFailedException();
         }
-
+        initTraineeAndTrainer(trainees, trainers);
         int needGroup = trainers.size()/2;
         List<Group> groups = groupRepository.findAll();
         initGroup(needGroup, groups);
@@ -79,8 +79,8 @@ public class GroupService {
             Trainer secondTrainer = trainers.get(currentTrainers++);
             firstTrainer.setTeamGroup(group);
             secondTrainer.setTeamGroup(group);
-            groups.get(start).addTrainer(firstTrainer);
-            groups.get(start).addTrainer(secondTrainer);
+            group.addTrainer(firstTrainer);
+            group.addTrainer(secondTrainer);
         }
     }
 
@@ -93,6 +93,16 @@ public class GroupService {
             group.addTrainee(trainee);
             currentGroup = currentGroup == needGroup ? 1 : currentGroup + 1;
         }
+    }
+
+    private void initTraineeAndTrainer(List<Trainee> trainees, List<Trainer> trainers) {
+        trainees.forEach(trainee -> {
+            trainee.setTeamGroup(null);
+        });
+        trainers.forEach(trainer -> {
+            trainer.setTeamGroup(null);
+        });
+
     }
 
     private void initGroup(int needGroup, List<Group> groups) {
